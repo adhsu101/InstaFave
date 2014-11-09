@@ -12,11 +12,13 @@
 		8DCDADB01A0EE04900851A8E /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADAF1A0EE04900851A8E /* FavoritesViewController.m */; };
 		8DCDADB31A0EE04900851A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDADB11A0EE04900851A8E /* Main.storyboard */; };
 		8DCDADB81A0EE04900851A8E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDADB61A0EE04900851A8E /* LaunchScreen.xib */; };
-		8DCDADC41A0EE04900851A8E /* InstaFaveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADC31A0EE04900851A8E /* InstaFaveTests.m */; };
+		8DCDADC41A0EE04900851A8E /* PhotoFaveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADC31A0EE04900851A8E /* PhotoFaveTests.m */; };
 		8DCDADCF1A0EE2DC00851A8E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADCE1A0EE2DC00851A8E /* SearchViewController.m */; };
 		8DCDADD21A0EE5BC00851A8E /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */; };
 		8DCDADD41A0EEDE400851A8E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDADD31A0EEDE400851A8E /* Media.xcassets */; };
 		8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCDADD51A0EF88F00851A8E /* MapKit.framework */; };
+		8DCFD8491A0F08D100D60CED /* InstagramObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCFD8481A0F08D100D60CED /* InstagramObject.m */; };
+		8DCFD84C1A0F095100D60CED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCFD84B1A0F095100D60CED /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8DCDADA41A0EE04900851A8E /* InstaFave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaFave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DCDADA41A0EE04900851A8E /* PhotoFave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCDADA81A0EE04900851A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DCDADA91A0EE04900851A8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DCDADAB1A0EE04900851A8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,15 +41,18 @@
 		8DCDADAF1A0EE04900851A8E /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8DCDADB21A0EE04900851A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8DCDADB71A0EE04900851A8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8DCDADBD1A0EE04900851A8E /* InstaFaveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaFaveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DCDADBD1A0EE04900851A8E /* PhotoFaveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFaveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCDADC21A0EE04900851A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DCDADC31A0EE04900851A8E /* InstaFaveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaFaveTests.m; sourceTree = "<group>"; };
+		8DCDADC31A0EE04900851A8E /* PhotoFaveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoFaveTests.m; sourceTree = "<group>"; };
 		8DCDADCD1A0EE2DC00851A8E /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		8DCDADCE1A0EE2DC00851A8E /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		8DCDADD01A0EE5BC00851A8E /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		8DCDADD31A0EEDE400851A8E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
 		8DCDADD51A0EF88F00851A8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8DCFD8471A0F08D100D60CED /* InstagramObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramObject.h; sourceTree = "<group>"; };
+		8DCFD8481A0F08D100D60CED /* InstagramObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramObject.m; sourceTree = "<group>"; };
+		8DCFD84B1A0F095100D60CED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DCFD84C1A0F095100D60CED /* CoreLocation.framework in Frameworks */,
 				8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,9 +78,10 @@
 		8DCDAD9B1A0EE04900851A8E = {
 			isa = PBXGroup;
 			children = (
+				8DCFD84B1A0F095100D60CED /* CoreLocation.framework */,
 				8DCDADB11A0EE04900851A8E /* Main.storyboard */,
-				8DCDADA61A0EE04900851A8E /* InstaFave */,
-				8DCDADC01A0EE04900851A8E /* InstaFaveTests */,
+				8DCDADA61A0EE04900851A8E /* PhotoFave */,
+				8DCDADC01A0EE04900851A8E /* PhotoFaveTests */,
 				8DCDADA51A0EE04900851A8E /* Products */,
 				8DCDADD51A0EF88F00851A8E /* MapKit.framework */,
 			);
@@ -83,13 +90,13 @@
 		8DCDADA51A0EE04900851A8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DCDADA41A0EE04900851A8E /* InstaFave.app */,
-				8DCDADBD1A0EE04900851A8E /* InstaFaveTests.xctest */,
+				8DCDADA41A0EE04900851A8E /* PhotoFave.app */,
+				8DCDADBD1A0EE04900851A8E /* PhotoFaveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8DCDADA61A0EE04900851A8E /* InstaFave */ = {
+		8DCDADA61A0EE04900851A8E /* PhotoFave */ = {
 			isa = PBXGroup;
 			children = (
 				8DCDADAB1A0EE04900851A8E /* AppDelegate.h */,
@@ -100,10 +107,12 @@
 				8DCDADCE1A0EE2DC00851A8E /* SearchViewController.m */,
 				8DCDADD01A0EE5BC00851A8E /* CustomCollectionViewCell.h */,
 				8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */,
+				8DCFD84A1A0F08D500D60CED /* Model */,
 				8DCDADB61A0EE04900851A8E /* LaunchScreen.xib */,
 				8DCDADA71A0EE04900851A8E /* Supporting Files */,
 				8DCDADD31A0EEDE400851A8E /* Media.xcassets */,
 			);
+			name = PhotoFave;
 			path = InstaFave;
 			sourceTree = "<group>";
 		};
@@ -116,12 +125,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8DCDADC01A0EE04900851A8E /* InstaFaveTests */ = {
+		8DCDADC01A0EE04900851A8E /* PhotoFaveTests */ = {
 			isa = PBXGroup;
 			children = (
-				8DCDADC31A0EE04900851A8E /* InstaFaveTests.m */,
+				8DCDADC31A0EE04900851A8E /* PhotoFaveTests.m */,
 				8DCDADC11A0EE04900851A8E /* Supporting Files */,
 			);
+			name = PhotoFaveTests;
 			path = InstaFaveTests;
 			sourceTree = "<group>";
 		};
@@ -133,12 +143,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8DCFD84A1A0F08D500D60CED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DCFD8471A0F08D100D60CED /* InstagramObject.h */,
+				8DCFD8481A0F08D100D60CED /* InstagramObject.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DCDADA31A0EE04900851A8E /* InstaFave */ = {
+		8DCDADA31A0EE04900851A8E /* PhotoFave */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DCDADC71A0EE04900851A8E /* Build configuration list for PBXNativeTarget "InstaFave" */;
+			buildConfigurationList = 8DCDADC71A0EE04900851A8E /* Build configuration list for PBXNativeTarget "PhotoFave" */;
 			buildPhases = (
 				8DCDADA01A0EE04900851A8E /* Sources */,
 				8DCDADA11A0EE04900851A8E /* Frameworks */,
@@ -148,14 +167,14 @@
 			);
 			dependencies = (
 			);
-			name = InstaFave;
+			name = PhotoFave;
 			productName = InstaFave;
-			productReference = 8DCDADA41A0EE04900851A8E /* InstaFave.app */;
+			productReference = 8DCDADA41A0EE04900851A8E /* PhotoFave.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8DCDADBC1A0EE04900851A8E /* InstaFaveTests */ = {
+		8DCDADBC1A0EE04900851A8E /* PhotoFaveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DCDADCA1A0EE04900851A8E /* Build configuration list for PBXNativeTarget "InstaFaveTests" */;
+			buildConfigurationList = 8DCDADCA1A0EE04900851A8E /* Build configuration list for PBXNativeTarget "PhotoFaveTests" */;
 			buildPhases = (
 				8DCDADB91A0EE04900851A8E /* Sources */,
 				8DCDADBA1A0EE04900851A8E /* Frameworks */,
@@ -166,9 +185,9 @@
 			dependencies = (
 				8DCDADBF1A0EE04900851A8E /* PBXTargetDependency */,
 			);
-			name = InstaFaveTests;
+			name = PhotoFaveTests;
 			productName = InstaFaveTests;
-			productReference = 8DCDADBD1A0EE04900851A8E /* InstaFaveTests.xctest */;
+			productReference = 8DCDADBD1A0EE04900851A8E /* PhotoFaveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -189,7 +208,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8DCDAD9F1A0EE04900851A8E /* Build configuration list for PBXProject "InstaFave" */;
+			buildConfigurationList = 8DCDAD9F1A0EE04900851A8E /* Build configuration list for PBXProject "PhotoFave" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -202,8 +221,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DCDADA31A0EE04900851A8E /* InstaFave */,
-				8DCDADBC1A0EE04900851A8E /* InstaFaveTests */,
+				8DCDADA31A0EE04900851A8E /* PhotoFave */,
+				8DCDADBC1A0EE04900851A8E /* PhotoFaveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +255,7 @@
 				8DCDADB01A0EE04900851A8E /* FavoritesViewController.m in Sources */,
 				8DCDADAD1A0EE04900851A8E /* AppDelegate.m in Sources */,
 				8DCDADCF1A0EE2DC00851A8E /* SearchViewController.m in Sources */,
+				8DCFD8491A0F08D100D60CED /* InstagramObject.m in Sources */,
 				8DCDADAA1A0EE04900851A8E /* main.m in Sources */,
 				8DCDADD21A0EE5BC00851A8E /* CustomCollectionViewCell.m in Sources */,
 			);
@@ -245,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DCDADC41A0EE04900851A8E /* InstaFaveTests.m in Sources */,
+				8DCDADC41A0EE04900851A8E /* PhotoFaveTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +274,7 @@
 /* Begin PBXTargetDependency section */
 		8DCDADBF1A0EE04900851A8E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DCDADA31A0EE04900851A8E /* InstaFave */;
+			target = 8DCDADA31A0EE04900851A8E /* PhotoFave */;
 			targetProxy = 8DCDADBE1A0EE04900851A8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -362,7 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = InstaFave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PhotoFave;
 			};
 			name = Debug;
 		};
@@ -372,7 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = InstaFave/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PhotoFave;
 			};
 			name = Release;
 		};
@@ -390,7 +410,7 @@
 				);
 				INFOPLIST_FILE = InstaFaveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PhotoFaveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstaFave.app/InstaFave";
 			};
 			name = Debug;
@@ -405,7 +425,7 @@
 				);
 				INFOPLIST_FILE = InstaFaveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PhotoFaveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstaFave.app/InstaFave";
 			};
 			name = Release;
@@ -413,7 +433,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8DCDAD9F1A0EE04900851A8E /* Build configuration list for PBXProject "InstaFave" */ = {
+		8DCDAD9F1A0EE04900851A8E /* Build configuration list for PBXProject "PhotoFave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DCDADC51A0EE04900851A8E /* Debug */,
@@ -422,21 +442,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DCDADC71A0EE04900851A8E /* Build configuration list for PBXNativeTarget "InstaFave" */ = {
+		8DCDADC71A0EE04900851A8E /* Build configuration list for PBXNativeTarget "PhotoFave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DCDADC81A0EE04900851A8E /* Debug */,
 				8DCDADC91A0EE04900851A8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		8DCDADCA1A0EE04900851A8E /* Build configuration list for PBXNativeTarget "InstaFaveTests" */ = {
+		8DCDADCA1A0EE04900851A8E /* Build configuration list for PBXNativeTarget "PhotoFaveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DCDADCB1A0EE04900851A8E /* Debug */,
 				8DCDADCC1A0EE04900851A8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

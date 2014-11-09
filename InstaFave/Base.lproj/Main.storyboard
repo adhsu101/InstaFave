@@ -155,7 +155,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ALQ-O9-ph8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SSs-EY-Wf6">
-                                    <size key="itemSize" width="581" height="581"/>
+                                    <size key="itemSize" width="320" height="320"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -165,14 +165,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="581" height="581"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBJ-xI-iLy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="581" height="581"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GBJ-xI-iLy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="380"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="PYN-LH-bTX" userLabel="Star Image View">
-                                                    <rect key="frame" x="548" y="8" width="25" height="25"/>
+                                                    <rect key="frame" x="347" y="8" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="Zw8-mL-LsI"/>
                                                         <constraint firstAttribute="height" constant="25" id="yBe-KW-l03"/>
@@ -182,8 +182,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="GBJ-xI-iLy" secondAttribute="trailing" id="2jn-dz-buQ"/>
                                             <constraint firstItem="PYN-LH-bTX" firstAttribute="trailing" secondItem="kvq-zg-Sna" secondAttribute="trailingMargin" id="7xK-Nd-xwr"/>
+                                            <constraint firstItem="GBJ-xI-iLy" firstAttribute="leading" secondItem="kvq-zg-Sna" secondAttribute="leading" id="Ir1-Uh-g5q"/>
+                                            <constraint firstAttribute="bottom" secondItem="GBJ-xI-iLy" secondAttribute="bottom" id="Vhg-4b-ogV"/>
                                             <constraint firstItem="PYN-LH-bTX" firstAttribute="top" secondItem="kvq-zg-Sna" secondAttribute="topMargin" id="Vj1-vI-wBR"/>
+                                            <constraint firstItem="GBJ-xI-iLy" firstAttribute="top" secondItem="kvq-zg-Sna" secondAttribute="top" id="piE-gg-BRo"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="GBJ-xI-iLy" id="q3b-zX-Gbh"/>
@@ -230,7 +234,6 @@
         <!--Navigation Controller-->
         <scene sceneID="QcH-35-lXU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r6s-tk-Ub9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IfJ-Io-eZR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="B6d-FJ-ZDv"/>
                     <toolbarItems/>
@@ -243,6 +246,7 @@
                         <segue destination="9dh-yw-AYv" kind="relationship" relationship="rootViewController" id="TTA-VS-dOz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6s-tk-Ub9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1252" y="1059"/>
         </scene>
