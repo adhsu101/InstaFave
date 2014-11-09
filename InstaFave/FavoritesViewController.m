@@ -8,8 +8,12 @@
 
 #import "FavoritesViewController.h"
 
-@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@import MapKit;
+
+@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -28,6 +32,39 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)onSegmentedControlChanged:(UISegmentedControl *)sender
+{
+
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+        {
+            [UIView transitionFromView:self.mapView
+                                toView:self.collectionView duration:0.5
+                               options:(UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews)
+                            completion:^(BOOL finished) {
+                                nil;
+                            }];
+        }
+            break;
+        case 1:
+        {
+            [UIView transitionFromView:self.collectionView
+                                toView:self.mapView
+                              duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
+                            completion:^(BOOL finished) {
+                                nil;
+                            }];
+        }
+            break;
+        default: 
+            break; 
+    }
+    
 }
 
 @end

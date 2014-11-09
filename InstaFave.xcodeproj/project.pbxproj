@@ -16,6 +16,7 @@
 		8DCDADCF1A0EE2DC00851A8E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADCE1A0EE2DC00851A8E /* SearchViewController.m */; };
 		8DCDADD21A0EE5BC00851A8E /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */; };
 		8DCDADD41A0EEDE400851A8E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DCDADD31A0EEDE400851A8E /* Media.xcassets */; };
+		8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCDADD51A0EF88F00851A8E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		8DCDADD01A0EE5BC00851A8E /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		8DCDADD31A0EEDE400851A8E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
+		8DCDADD51A0EF88F00851A8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 				8DCDADA61A0EE04900851A8E /* InstaFave */,
 				8DCDADC01A0EE04900851A8E /* InstaFaveTests */,
 				8DCDADA51A0EE04900851A8E /* Products */,
+				8DCDADD51A0EF88F00851A8E /* MapKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
