@@ -15,10 +15,11 @@
 
 @property NSData *imageData;
 @property NSString *username;
-@property BOOL *isFavorite;
-@property CLLocation *location;
-@property MKMapItem *mapItem;
+@property BOOL isFavorite;
+@property float longitude;
+@property float latitude;
 @property NSArray *tags;
+@property NSString *photoID;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 

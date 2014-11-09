@@ -13,7 +13,7 @@
 @interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+// @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -39,7 +39,7 @@
 - (IBAction)onSegmentedControlChanged:(UISegmentedControl *)sender
 {
 
-    switch (self.segmentedControl.selectedSegmentIndex)
+    switch (sender.selectedSegmentIndex)
     {
         case 0:
         {

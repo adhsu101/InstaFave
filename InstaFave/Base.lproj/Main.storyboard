@@ -26,7 +26,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vyz-lS-50Z">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e9s-bH-Mvo">
-                                    <size key="itemSize" width="581" height="581"/>
+                                    <size key="itemSize" width="320" height="320"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -36,12 +36,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="581" height="581"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-zT-3Gh"/>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-SR-ESs" userLabel="Star Image View">
-                                                    <rect key="frame" x="548" y="8" width="25" height="25"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-zT-3Gh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" id="8mW-4o-jbN"/>
+                                                        <constraint firstAttribute="width" id="nlw-Jh-jk5"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-SR-ESs" userLabel="Star Image View">
+                                                    <rect key="frame" x="287" y="8" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="StZ-Hd-yDc"/>
                                                         <constraint firstAttribute="width" constant="25" id="Xo8-1Q-LET"/>
@@ -51,8 +56,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="qmX-zT-3Gh" firstAttribute="top" secondItem="a00-C2-Si2" secondAttribute="top" id="9av-4P-J4X"/>
                                             <constraint firstItem="2hn-SR-ESs" firstAttribute="trailing" secondItem="a00-C2-Si2" secondAttribute="trailingMargin" id="KhN-kM-PSr"/>
                                             <constraint firstItem="2hn-SR-ESs" firstAttribute="top" secondItem="a00-C2-Si2" secondAttribute="topMargin" id="Njt-FM-I3Z"/>
+                                            <constraint firstItem="qmX-zT-3Gh" firstAttribute="leading" secondItem="a00-C2-Si2" secondAttribute="leading" id="bxN-P5-kyO"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="qmX-zT-3Gh" id="2ND-Pg-8T4"/>
@@ -95,7 +102,6 @@
                     <connections>
                         <outlet property="collectionView" destination="Vyz-lS-50Z" id="Ojp-Ot-8J9"/>
                         <outlet property="mapView" destination="bpS-07-yf8" id="YG4-Kc-fyd"/>
-                        <outlet property="segmentedControl" destination="5oI-HC-30v" id="28Z-lO-5oM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -169,10 +175,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GBJ-xI-iLy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="380"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="PYN-LH-bTX" userLabel="Star Image View">
-                                                    <rect key="frame" x="347" y="8" width="25" height="25"/>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="PYN-LH-bTX" userLabel="Star Image View">
+                                                    <rect key="frame" x="287" y="8" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="Zw8-mL-LsI"/>
                                                         <constraint firstAttribute="height" constant="25" id="yBe-KW-l03"/>
@@ -211,8 +217,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="4MJ-zP-d9u">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="7Iy-N2-i23">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="asW-cg-BeZ">
+                                <rect key="frame" x="16" y="7" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Tags"/>
+                                    <segment title="Users"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSegmentedControlValueChanged:" destination="9dh-yw-AYv" eventType="valueChanged" id="2cJ-IU-u25"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Hra-2a-1j9">
-                            <rect key="frame" x="16" y="7" width="533" height="30"/>
+                            <rect key="frame" x="133" y="7" width="416" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -220,7 +239,11 @@
                                 <outlet property="delegate" destination="9dh-yw-AYv" id="s4f-Kf-FkP"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="gRi-y1-L9Z"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="gRi-y1-L9Z">
+                            <connections>
+                                <action selector="onSearchButtonTapped:" destination="9dh-yw-AYv" id="COa-DK-C8N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ALQ-O9-ph8" id="0RL-Yb-m5m"/>
@@ -229,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwA-EB-xf0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2054" y="1059"/>
+            <point key="canvasLocation" x="2059" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QcH-35-lXU">

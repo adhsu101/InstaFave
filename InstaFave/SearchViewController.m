@@ -10,12 +10,16 @@
 #import "CustomCollectionViewCell.h"
 #import "InstagramObject.h"
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=1e046625455d45bd80b2d2dbcf414d69"
+#define kTagURL @"https://api.instagram.com/v1/tags/snow/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
+#define kUserMediaURL @"https://api.instagram.com/v1/users/489110643/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
+#define kUserSearch @"https://api.instagram.com/v1/users/search?q=jack&access_token=ACCESS-TOKEN"
 
 @interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 @property NSDictionary *instagramDictionaries;
 @property NSMutableArray *instagramObjects;
+@property NSMutableArray *favInstagramObjects;
 
 @end
 
@@ -24,8 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.favInstagramObjects = [NSMutableArray array];
     [self loadJSONData];
 }
+
+#pragma mark - Collection View delegates
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -39,15 +46,62 @@
     UIImage *image = [UIImage imageWithData:instagramObject.imageData];
     cell.imageView.image = image;
     
+    if (instagramObject.isFavorite == NO)
+    {
+        [cell.starView setHidden:YES];
+    }
+    else
+    {
+        [cell.starView setHidden:NO];
+    }
+    
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    InstagramObject *instagramObject = self.instagramObjects[indexPath.item];
+    CustomCollectionViewCell *cell = (CustomCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    instagramObject.isFavorite = !instagramObject.isFavorite;
+    [cell.starView setHidden:!cell.starView.isHidden];
+    
+    if ([self.favInstagramObjects containsObject:instagramObject])
+    {
+        [self.favInstagramObjects removeObject:instagramObject];
+    }
+    else
+    {
+        [self.favInstagramObjects addObject:instagramObject];
+    }
+
+}
+
+#pragma mark - IBActions
+
+- (IBAction)onSearchButtonTapped:(UIBarButtonItem *)sender
+{
+
+}
+
+- (IBAction)onSegmentedControlValueChanged:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0)
+    {
+        NSLog(@"0");
+    }
+    else
+    {
+        NSLog(@"1");
+    }
+}
+
 
 #pragma mark - helper methods
 
 - (void)loadJSONData
 {
     
-    NSURL *url = [NSURL URLWithString:kURL];
+    NSURL *url = [NSURL URLWithString:kUserMediaURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
@@ -75,7 +129,6 @@
     {
         InstagramObject *instagramObject = [[InstagramObject alloc] initWithDict:instagramDict];
         [self.instagramObjects addObject:instagramObject];
-        
     }
     
 }
