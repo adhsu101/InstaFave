@@ -31,6 +31,7 @@
 {
     [self load];
     [self.collectionView reloadData];
+    [self addAnnotationsToMapView];
 }
 
 #pragma mark - Collection View delegate methods
@@ -57,7 +58,19 @@
     [self.favInstagramDictionaries removeObject:instagramDict];
     [self save];
     [self.collectionView reloadData];
+    [self removeAnnotation:instagramDict];
     
+}
+
+#pragma mark - map view delegate methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+    pin.canShowCallout = YES;
+    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoDark];
+
+    return pin;
 }
 
 #pragma mark - IBActions
@@ -129,6 +142,39 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
     return url;
+}
+
+- (void)addAnnotationsToMapView
+{
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    for (NSDictionary *favDict in self.favInstagramDictionaries)
+    {
+        double latitude = [favDict[@"latitude"] doubleValue];
+        double longitude = [favDict[@"longitude"] doubleValue];
+        
+        if (latitude != 0.0 || longitude != 0.0)
+        {
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(latitude, longitude);
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            annotation.coordinate = coord;
+            annotation.subtitle = favDict[@"username"];
+            [self.mapView addAnnotation:annotation];
+        }
+    }
+//    [self frameAnnotations];
+}
+
+- (void)removeAnnotation:(NSDictionary *)instagramDict
+{
+    for (MKPointAnnotation *annotation in [self.mapView annotations])
+    {
+        if (annotation.coordinate.latitude == [instagramDict[@"latitude"] doubleValue] && annotation.coordinate.longitude == [instagramDict[@"longitude"] doubleValue])
+        {
+            [self.mapView removeAnnotation:annotation];
+            break;
+        }
+    }
 }
 
 @end

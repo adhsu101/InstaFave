@@ -94,26 +94,32 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     NSString *searchString = [textField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-
-    NSString *urlString = [NSString string];
-    if (self.searchTypeControl.selectedSegmentIndex == 0)
+    
+    if (![searchString isEqualToString:@""])
     {
-        searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
-        urlString = [NSString stringWithFormat:kTagSearchURL, searchString];
-        [self loadInstagramData:urlString];
-    }
-    else
-    {
-        [self.collectionView setHidden:YES];
-        [self.userContainerView setHidden:NO];
 
-        searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        urlString = [NSString stringWithFormat:kUserSearch, searchString];
-        [self.userListVC loadUserData:urlString];
-        
+        NSString *urlString = [NSString string];
+        if (self.searchTypeControl.selectedSegmentIndex == 0)
+        {
+            searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
+            urlString = [NSString stringWithFormat:kTagSearchURL, searchString];
+            [self loadInstagramData:urlString];
+        }
+        else
+        {
+            [self.collectionView setHidden:YES];
+            [self.userContainerView setHidden:NO];
+
+            searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+            urlString = [NSString stringWithFormat:kUserSearch, searchString];
+            [self.userListVC loadUserData:urlString];
+            
+        }
     }
     
+    [textField resignFirstResponder];
     return YES;
+    
 }
 
 #pragma mark - IBActions
