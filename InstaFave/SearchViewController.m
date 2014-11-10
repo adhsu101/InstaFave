@@ -35,17 +35,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self load];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Tab Bar Controller delegate methods
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-{
-    
-    [self save];
-    
-    return YES;
-}
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+//{
+//    return YES;
+//}
 
 #pragma mark - Collection View delegates
 
@@ -61,14 +59,14 @@
     UIImage *image = [UIImage imageWithData:instagramDictionary[@"imageData"]];
     cell.imageView.image = image;
     
-//    if (instagramObject.isFavorite == NO)
-//    {
-//        [cell.starView setHidden:YES];
-//    }
-//    else
-//    {
-//        [cell.starView setHidden:NO];
-//    }
+    if ([self.favInstagramDictionaries containsObject:instagramDictionary])
+    {
+        [cell.starView setHidden:NO];
+    }
+    else
+    {
+        [cell.starView setHidden:YES];
+    }
     
     return cell;
 }
@@ -77,7 +75,6 @@
 {
     NSDictionary *instagramDict = self.instagramDictionaries[indexPath.item];
     CustomCollectionViewCell *cell = (CustomCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//    instagramObject.isFavorite = !instagramObject.isFavorite;
     [cell.starView setHidden:!cell.starView.isHidden];
     
     if ([self.favInstagramDictionaries containsObject:instagramDict])
@@ -88,6 +85,8 @@
     {
         [self.favInstagramDictionaries addObject:instagramDict];
     }
+    
+    [self save];
 
 }
 

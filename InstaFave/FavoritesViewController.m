@@ -47,17 +47,18 @@
     NSDictionary *instagramDictionary = self.favInstagramDictionaries[indexPath.item];
     UIImage *image = [UIImage imageWithData:instagramDictionary[@"imageData"]];
     cell.imageView.image = image;
-
-//    if (instagramObject.isFavorite == NO)
-//    {
-//        [cell.starView setHidden:YES];
-//    }
-//    else
-//    {
-//        [cell.starView setHidden:NO];
-//    }
+    [cell.starView setHidden:YES];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *instagramDict = self.favInstagramDictionaries[indexPath.item];
+    [self.favInstagramDictionaries removeObject:instagramDict];
+    [self save];
+    [self.collectionView reloadData];
+    
 }
 
 #pragma mark - IBActions
