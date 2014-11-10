@@ -9,7 +9,6 @@
 #import "FavoritesViewController.h"
 #import "SearchViewController.h"
 #import "CustomCollectionViewCell.h"
-#import "InstagramObject.h"
 
 @import MapKit;
 

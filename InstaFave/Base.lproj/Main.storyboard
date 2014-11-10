@@ -249,6 +249,7 @@
                     <connections>
                         <outlet property="collectionView" destination="ALQ-O9-ph8" id="0RL-Yb-m5m"/>
                         <outlet property="searchField" destination="Hra-2a-1j9" id="7Hq-wf-D5v"/>
+                        <outlet property="searchTypeControl" destination="asW-cg-BeZ" id="wdo-3s-l1A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwA-EB-xf0" sceneMemberID="firstResponder"/>

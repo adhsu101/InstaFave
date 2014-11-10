@@ -10,13 +10,14 @@
 #import "CustomCollectionViewCell.h"
 
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=1e046625455d45bd80b2d2dbcf414d69"
-#define kTagURL @"https://api.instagram.com/v1/tags/snow/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
-#define kUserMediaURL @"https://api.instagram.com/v1/users/215829852/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
-#define kUserSearch @"https://api.instagram.com/v1/users/search?q=jack&access_token=ACCESS-TOKEN"
+#define kTagSearchURL @"https://api.instagram.com/v1/tags/%@/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
+#define kUserMediaURL @"https://api.instagram.com/v1/users/%@/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
+#define kUserSearch @"https://api.instagram.com/v1/users/search?q=%@&access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
 
 @interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *searchTypeControl;
 @property NSMutableArray *instagramDictionaries;
 @property NSMutableArray *favInstagramDictionaries;
 
@@ -29,7 +30,7 @@
     [super viewDidLoad];
     self.favInstagramDictionaries = [NSMutableArray array];
     self.tabBarController.delegate = self;
-    [self loadJSONData];
+    [self loadJSONData:kURL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -90,11 +91,29 @@
 
 }
 
+#pragma mark - text field delegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *urlString = [NSString string];
+    if (self.searchTypeControl.selectedSegmentIndex == 0)
+    {
+        urlString = [NSString stringWithFormat:kTagSearchURL, self.searchField.text];
+    }
+    else
+    {
+        urlString = [NSString stringWithFormat:kUserMediaURL, self.searchField.text];
+    }
+    
+    [self loadJSONData:urlString];
+    return YES;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)onSearchButtonTapped:(UIBarButtonItem *)sender
 {
-
+    [self textFieldShouldReturn:self.searchField];
 }
 
 - (IBAction)onSegmentedControlValueChanged:(UISegmentedControl *)sender
@@ -112,10 +131,10 @@
 
 #pragma mark - helper methods
 
-- (void)loadJSONData
+- (void)loadJSONData:(NSString *)urlString
 {
     
-    NSURL *url = [NSURL URLWithString:kURL];
+    NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
