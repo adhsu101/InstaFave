@@ -44,12 +44,19 @@
     cell.textLabel.text = userDict[@"full_name"];
     cell.detailTextLabel.text = userDict[@"username"];
     
+    // extract profile picture
+    
+//    NSString *urlString = userDict[@"profile_picture"];
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    NSData *imageData = [NSData dataWithContentsOfURL:url];
+//    cell.imageView.image = [UIImage imageWithData:imageData];
+    
     return cell;
 }
 
 #pragma mark - helper methods
 
-- (void)loadJSONData:(NSString *)urlString
+- (void)loadUserData:(NSString *)urlString
 {
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -69,6 +76,14 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (NSString *)getID
+{
+    NSDictionary *user = self.users[[self.tableView indexPathForSelectedRow].row];
+    NSString *id = user[@"id"];
+    
+    return id;
 }
 
 @end

@@ -35,7 +35,7 @@
     
     self.favInstagramDictionaries = [NSMutableArray array];
     self.tabBarController.delegate = self;
-    [self loadJSONData:kURL];
+    [self loadInstagramData:kURL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,13 +100,16 @@
     {
         searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
         urlString = [NSString stringWithFormat:kTagSearchURL, searchString];
-        [self loadJSONData:urlString];
+        [self loadInstagramData:urlString];
     }
     else
     {
+        [self.collectionView setHidden:YES];
+        [self.userContainerView setHidden:NO];
+
         searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         urlString = [NSString stringWithFormat:kUserSearch, searchString];
-        [self.userListVC loadJSONData:urlString];
+        [self.userListVC loadUserData:urlString];
         
     }
     
@@ -134,11 +137,18 @@
     }
 }
 
-
+- (IBAction)unwindFromUserListSegue:(UIStoryboardSegue *)segue
+{
+    NSString *id = [self.userListVC getID];
+    NSString *urlString = [NSString stringWithFormat:kUserMediaURL, id];
+    [self loadInstagramData:urlString];
+    [self.collectionView setHidden:NO];
+    [self.userContainerView setHidden:YES];    
+}
 
 #pragma mark - helper methods
 
-- (void)loadJSONData:(NSString *)urlString
+- (void)loadInstagramData:(NSString *)urlString
 {
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -191,7 +201,6 @@
             longitude = [location[@"longitude"] floatValue];
         }
 
-        
         // create simplified dictionary
         NSDictionary *processedDict = [[NSDictionary alloc] initWithObjects:@[id, username, imageData, [NSString stringWithFormat:@"%f", latitude], [NSString stringWithFormat:@"%f", longitude]] forKeys:@[@"id", @"username", @"imageData", @"latitude", @"longitude"]];
         [self.instagramDictionaries addObject:processedDict];

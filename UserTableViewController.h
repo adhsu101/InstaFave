@@ -10,6 +10,7 @@
 
 @interface UserTableViewController : UIViewController
 
-- (void)loadJSONData:(NSString *)urlString;
+- (void)loadUserData:(NSString *)urlString;
+- (NSString *)getID;
 
 @end
