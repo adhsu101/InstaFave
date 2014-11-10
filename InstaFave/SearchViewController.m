@@ -12,7 +12,7 @@
 
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=1e046625455d45bd80b2d2dbcf414d69"
 #define kTagSearchURL @"https://api.instagram.com/v1/tags/%@/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
-#define kUserMediaURL @"https://api.instagram.com/v1/users/%@/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
+#define kUserMediaURL @"https://api.instagram.com/v1/users/%@/media/recent/?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
 #define kUserSearch @"https://api.instagram.com/v1/users/search?q=%@&access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
 
 

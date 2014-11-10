@@ -46,10 +46,10 @@
     
     // extract profile picture
     
-//    NSString *urlString = userDict[@"profile_picture"];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSData *imageData = [NSData dataWithContentsOfURL:url];
-//    cell.imageView.image = [UIImage imageWithData:imageData];
+    NSString *urlString = userDict[@"profile_picture"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *imageData = [NSData dataWithContentsOfURL:url];
+    cell.imageView.image = [UIImage imageWithData:imageData];
     
     return cell;
 }
