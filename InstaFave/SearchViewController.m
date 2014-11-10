@@ -101,6 +101,9 @@
         NSString *urlString = [NSString string];
         if (self.searchTypeControl.selectedSegmentIndex == 0)
         {
+            [self.collectionView setHidden:NO];
+            [self.userContainerView setHidden:YES];
+
             searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
             urlString = [NSString stringWithFormat:kTagSearchURL, searchString];
             [self loadInstagramData:urlString];
@@ -117,6 +120,7 @@
         }
     }
     
+    textField.text = @"";
     [textField resignFirstResponder];
     return YES;
     
@@ -127,20 +131,6 @@
 - (IBAction)onSearchButtonTapped:(UIBarButtonItem *)sender
 {
     [self textFieldShouldReturn:self.searchField];
-}
-
-- (IBAction)onSegmentedControlTapped:(UISegmentedControl *)sender
-{
-    if (sender.selectedSegmentIndex == 0)
-    {
-        [self.collectionView setHidden:NO];
-        [self.userContainerView setHidden:YES];
-    }
-    else
-    {
-        [self.collectionView setHidden:YES];
-        [self.userContainerView setHidden:NO];
-    }
 }
 
 - (IBAction)unwindFromUserListSegue:(UIStoryboardSegue *)segue

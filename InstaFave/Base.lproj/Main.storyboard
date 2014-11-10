@@ -240,17 +240,13 @@
                                     <segment title="Tags"/>
                                     <segment title="Users"/>
                                 </segments>
-                                <connections>
-                                    <action selector="onSegmentedControlTapped:" destination="9dh-yw-AYv" eventType="valueChanged" id="F71-hn-xdn"/>
-                                    <action selector="onSegmentedControlTapped:" destination="9dh-yw-AYv" eventType="touchUpInside" id="avd-xu-zh4"/>
-                                </connections>
                             </segmentedControl>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="Hra-2a-1j9">
                             <rect key="frame" x="133" y="7" width="416" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             <connections>
                                 <outlet property="delegate" destination="9dh-yw-AYv" id="s4f-Kf-FkP"/>
                             </connections>
