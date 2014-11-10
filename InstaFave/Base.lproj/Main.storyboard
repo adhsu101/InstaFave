@@ -39,13 +39,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-zT-3Gh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-zT-3Gh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" id="8mW-4o-jbN"/>
-                                                        <constraint firstAttribute="width" id="nlw-Jh-jk5"/>
+                                                        <constraint firstAttribute="height" constant="320" id="8mW-4o-jbN"/>
+                                                        <constraint firstAttribute="width" constant="320" id="nlw-Jh-jk5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-SR-ESs" userLabel="Star Image View">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="2hn-SR-ESs" userLabel="Star Image View">
                                                     <rect key="frame" x="287" y="8" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="StZ-Hd-yDc"/>
@@ -217,7 +218,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4MJ-zP-d9u">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="7Iy-N2-i23">
+                        <barButtonItem key="leftBarButtonItem" id="7Iy-N2-i23">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="asW-cg-BeZ">
                                 <rect key="frame" x="16" y="7" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,7 +231,7 @@
                                 </connections>
                             </segmentedControl>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Hra-2a-1j9">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="Hra-2a-1j9">
                             <rect key="frame" x="133" y="7" width="416" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -252,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwA-EB-xf0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2059" y="1059"/>
+            <point key="canvasLocation" x="2054" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QcH-35-lXU">

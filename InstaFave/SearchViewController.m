@@ -8,18 +8,17 @@
 
 #import "SearchViewController.h"
 #import "CustomCollectionViewCell.h"
-#import "InstagramObject.h"
+
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=1e046625455d45bd80b2d2dbcf414d69"
 #define kTagURL @"https://api.instagram.com/v1/tags/snow/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
-#define kUserMediaURL @"https://api.instagram.com/v1/users/489110643/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
+#define kUserMediaURL @"https://api.instagram.com/v1/users/215829852/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
 #define kUserSearch @"https://api.instagram.com/v1/users/search?q=jack&access_token=ACCESS-TOKEN"
 
-@interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate>
+@interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
-@property NSDictionary *instagramDictionaries;
-@property NSMutableArray *instagramObjects;
-@property NSMutableArray *favInstagramObjects;
+@property NSMutableArray *instagramDictionaries;
+@property NSMutableArray *favInstagramDictionaries;
 
 @end
 
@@ -28,8 +27,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.favInstagramObjects = [NSMutableArray array];
+    self.favInstagramDictionaries = [NSMutableArray array];
+    self.tabBarController.delegate = self;
     [self loadJSONData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self load];
+}
+
+#pragma mark - Tab Bar Controller delegate methods
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    
+    [self save];
+    
+    return YES;
 }
 
 #pragma mark - Collection View delegates
@@ -42,36 +57,36 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    InstagramObject *instagramObject = self.instagramObjects[indexPath.item];
-    UIImage *image = [UIImage imageWithData:instagramObject.imageData];
+    NSDictionary *instagramDictionary = self.instagramDictionaries[indexPath.item];
+    UIImage *image = [UIImage imageWithData:instagramDictionary[@"imageData"]];
     cell.imageView.image = image;
     
-    if (instagramObject.isFavorite == NO)
-    {
-        [cell.starView setHidden:YES];
-    }
-    else
-    {
-        [cell.starView setHidden:NO];
-    }
+//    if (instagramObject.isFavorite == NO)
+//    {
+//        [cell.starView setHidden:YES];
+//    }
+//    else
+//    {
+//        [cell.starView setHidden:NO];
+//    }
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InstagramObject *instagramObject = self.instagramObjects[indexPath.item];
+    NSDictionary *instagramDict = self.instagramDictionaries[indexPath.item];
     CustomCollectionViewCell *cell = (CustomCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    instagramObject.isFavorite = !instagramObject.isFavorite;
+//    instagramObject.isFavorite = !instagramObject.isFavorite;
     [cell.starView setHidden:!cell.starView.isHidden];
     
-    if ([self.favInstagramObjects containsObject:instagramObject])
+    if ([self.favInstagramDictionaries containsObject:instagramDict])
     {
-        [self.favInstagramObjects removeObject:instagramObject];
+        [self.favInstagramDictionaries removeObject:instagramDict];
     }
     else
     {
-        [self.favInstagramObjects addObject:instagramObject];
+        [self.favInstagramDictionaries addObject:instagramDict];
     }
 
 }
@@ -101,7 +116,7 @@
 - (void)loadJSONData
 {
     
-    NSURL *url = [NSURL URLWithString:kUserMediaURL];
+    NSURL *url = [NSURL URLWithString:kURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
@@ -114,23 +129,73 @@
         else
         {
             NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            self.instagramDictionaries = jsonData[@"data"];
-            [self processDictionaries];
+            NSArray *arrayOfRawInstagramDictionaries = jsonData[@"data"];
+            [self processDictionaries:arrayOfRawInstagramDictionaries];
             [self.collectionView reloadData];
         }
     }];
 }
 
-- (void)processDictionaries
+- (void)processDictionaries:(NSArray *)arrayOfRawDictionaries
 {
-    self.instagramObjects = [NSMutableArray array];
+    self.instagramDictionaries = [NSMutableArray array];
     
-    for (NSDictionary *instagramDict in self.instagramDictionaries)
+    for (NSDictionary *instagramDict in arrayOfRawDictionaries)
     {
-        InstagramObject *instagramObject = [[InstagramObject alloc] initWithDict:instagramDict];
-        [self.instagramObjects addObject:instagramObject];
+        // extract id
+        NSString *id = instagramDict[@"id"];
+        
+        // extract username
+        NSDictionary *user = instagramDict[@"user"];
+        NSString *username = user[@"username"];
+        
+        // extract image
+        NSDictionary *imagesDict = instagramDict[@"images"];
+        NSDictionary *standardResDict = imagesDict[@"standard_resolution"];
+        NSString *urlString = standardResDict[@"url"];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        
+        // extract location data
+        float latitude = 0.0;
+        float longitude = 0.0;
+        if (instagramDict[@"location"] != [NSNull null])
+        {
+            NSDictionary *location = instagramDict[@"location"];
+            latitude = [location[@"latitude"] floatValue];
+            longitude = [location[@"longitude"] floatValue];
+        }
+
+        
+        // create simplified dictionary
+        NSDictionary *processedDict = [[NSDictionary alloc] initWithObjects:@[id, username, imageData, [NSString stringWithFormat:@"%f", latitude], [NSString stringWithFormat:@"%f", longitude]] forKeys:@[@"id", @"username", @"imageData", @"latitude", @"longitude"]];
+        [self.instagramDictionaries addObject:processedDict];
     }
     
+}
+
+- (void)save
+{
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"faves.plist"];
+    [self.favInstagramDictionaries writeToURL:plistURL atomically:YES];
+
+}
+
+- (void)load
+{
+    NSURL *plistURL = [[self documentsDirectoryURL]URLByAppendingPathComponent:@"faves.plist"];
+    self.favInstagramDictionaries = [NSMutableArray arrayWithContentsOfURL:plistURL];
+    if (self.favInstagramDictionaries == nil)
+    {
+        self.favInstagramDictionaries = [NSMutableArray array];
+    }
+}
+
+- (NSURL *)documentsDirectoryURL
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    return url;
 }
 
 @end

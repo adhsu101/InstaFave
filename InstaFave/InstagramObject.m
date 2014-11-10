@@ -22,12 +22,10 @@
     NSURL *url = [NSURL URLWithString:urlString];
     self.imageData = [NSData dataWithContentsOfURL:url];
     
-//    @property NSString *username;
+//    self = [self initWithObjects:@[[NSData dataWithContentsOfURL:url]] forKeys:@[@"imageData"]];
+    
 //    @property BOOL isFavorite;
-//    @property float longitude;
-//    @property float latitude;
 //    @property NSArray *tags;
-//    @property NSString *photoID;
     
     return self;
 }
