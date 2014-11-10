@@ -20,6 +20,7 @@
 		8DCFD8491A0F08D100D60CED /* InstagramObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCFD8481A0F08D100D60CED /* InstagramObject.m */; };
 		8DCFD84C1A0F095100D60CED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCFD84B1A0F095100D60CED /* CoreLocation.framework */; };
 		8DCFD84F1A104C0F00D60CED /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCFD84E1A104C0F00D60CED /* UserTableViewController.m */; };
+		8DCFD8511A1086E700D60CED /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCFD8501A1086E700D60CED /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		8DCFD84B1A0F095100D60CED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8DCFD84D1A104C0F00D60CED /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewController.h; path = ../UserTableViewController.h; sourceTree = "<group>"; };
 		8DCFD84E1A104C0F00D60CED /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewController.m; path = ../UserTableViewController.m; sourceTree = "<group>"; };
+		8DCFD8501A1086E700D60CED /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DCFD8511A1086E700D60CED /* Social.framework in Frameworks */,
 				8DCFD84C1A0F095100D60CED /* CoreLocation.framework in Frameworks */,
 				8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */,
 			);
@@ -81,12 +84,13 @@
 		8DCDAD9B1A0EE04900851A8E = {
 			isa = PBXGroup;
 			children = (
-				8DCFD84B1A0F095100D60CED /* CoreLocation.framework */,
 				8DCDADB11A0EE04900851A8E /* Main.storyboard */,
 				8DCDADA61A0EE04900851A8E /* PhotoFave */,
 				8DCDADC01A0EE04900851A8E /* PhotoFaveTests */,
 				8DCDADA51A0EE04900851A8E /* Products */,
+				8DCFD8501A1086E700D60CED /* Social.framework */,
 				8DCDADD51A0EF88F00851A8E /* MapKit.framework */,
+				8DCFD84B1A0F095100D60CED /* CoreLocation.framework */,
 			);
 			sourceTree = "<group>";
 		};

@@ -12,7 +12,7 @@
 
 @import MapKit;
 
-@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate>
+@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property NSMutableArray *favInstagramDictionaries;
@@ -91,6 +91,18 @@
             break; 
     }
     
+}
+
+- (IBAction)onCellLongPressed:(UILongPressGestureRecognizer *)gesture
+{
+    CGPoint location = [gesture locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
+    
+    UIImage *selectedImage = [UIImage imageWithData:[self.favInstagramDictionaries[indexPath.row] objectForKey:@"imageData"]];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[selectedImage] applicationActivities:nil];
+//    UIActionSheet *shareSheet = [[UIActionSheet alloc] initWithTitle:@"Share this photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Tweet", @"Email", nil];
+//    [shareSheet showInView:self.view];
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 #pragma mark - helper methods

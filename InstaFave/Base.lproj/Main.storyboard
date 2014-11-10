@@ -56,6 +56,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="qmX-zT-3Gh" firstAttribute="top" secondItem="a00-C2-Si2" secondAttribute="top" id="9av-4P-J4X"/>
                                             <constraint firstItem="2hn-SR-ESs" firstAttribute="trailing" secondItem="a00-C2-Si2" secondAttribute="trailingMargin" id="KhN-kM-PSr"/>
@@ -65,6 +66,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="qmX-zT-3Gh" id="2ND-Pg-8T4"/>
                                             <outlet property="starView" destination="2hn-SR-ESs" id="yOj-EF-0JD"/>
+                                            <outletCollection property="gestureRecognizers" destination="OuS-9F-9eD" appends="YES" id="yo2-2R-rkh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -106,6 +108,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="OuS-9F-9eD">
+                    <connections>
+                        <action selector="onCellLongPressed:" destination="vXZ-lx-hvc" id="8OP-id-eav"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2054.5" y="387"/>
         </scene>
