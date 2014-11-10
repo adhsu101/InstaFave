@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "CustomCollectionViewCell.h"
+#import "UserTableViewController.h"
 
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=1e046625455d45bd80b2d2dbcf414d69"
 #define kTagSearchURL @"https://api.instagram.com/v1/tags/%@/media/recent?access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
@@ -16,6 +17,7 @@
 
 @interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIView *userContainerView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *searchTypeControl;
 @property NSMutableArray *instagramDictionaries;
@@ -38,13 +40,6 @@
     [self load];
     [self.collectionView reloadData];
 }
-
-#pragma mark - Tab Bar Controller delegate methods
-
-//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-//{
-//    return YES;
-//}
 
 #pragma mark - Collection View delegates
 
@@ -120,11 +115,13 @@
 {
     if (sender.selectedSegmentIndex == 0)
     {
-        NSLog(@"0");
+        [self.collectionView setHidden:NO];
+        [self.userContainerView setHidden:YES];
     }
     else
     {
-        NSLog(@"1");
+        [self.collectionView setHidden:YES];
+        [self.userContainerView setHidden:NO];
     }
 }
 

@@ -19,6 +19,7 @@
 		8DCDADD61A0EF88F00851A8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCDADD51A0EF88F00851A8E /* MapKit.framework */; };
 		8DCFD8491A0F08D100D60CED /* InstagramObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCFD8481A0F08D100D60CED /* InstagramObject.m */; };
 		8DCFD84C1A0F095100D60CED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCFD84B1A0F095100D60CED /* CoreLocation.framework */; };
+		8DCFD84F1A104C0F00D60CED /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCFD84E1A104C0F00D60CED /* UserTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		8DCFD8471A0F08D100D60CED /* InstagramObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramObject.h; sourceTree = "<group>"; };
 		8DCFD8481A0F08D100D60CED /* InstagramObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramObject.m; sourceTree = "<group>"; };
 		8DCFD84B1A0F095100D60CED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8DCFD84D1A104C0F00D60CED /* UserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewController.h; path = ../UserTableViewController.h; sourceTree = "<group>"; };
+		8DCFD84E1A104C0F00D60CED /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewController.m; path = ../UserTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				8DCDADAF1A0EE04900851A8E /* FavoritesViewController.m */,
 				8DCDADCD1A0EE2DC00851A8E /* SearchViewController.h */,
 				8DCDADCE1A0EE2DC00851A8E /* SearchViewController.m */,
+				8DCFD84D1A104C0F00D60CED /* UserTableViewController.h */,
+				8DCFD84E1A104C0F00D60CED /* UserTableViewController.m */,
 				8DCDADD01A0EE5BC00851A8E /* CustomCollectionViewCell.h */,
 				8DCDADD11A0EE5BC00851A8E /* CustomCollectionViewCell.m */,
 				8DCFD84A1A0F08D500D60CED /* Model */,
@@ -256,6 +261,7 @@
 				8DCDADAD1A0EE04900851A8E /* AppDelegate.m in Sources */,
 				8DCDADCF1A0EE2DC00851A8E /* SearchViewController.m in Sources */,
 				8DCFD8491A0F08D100D60CED /* InstagramObject.m in Sources */,
+				8DCFD84F1A104C0F00D60CED /* UserTableViewController.m in Sources */,
 				8DCDADAA1A0EE04900851A8E /* main.m in Sources */,
 				8DCDADD21A0EE5BC00851A8E /* CustomCollectionViewCell.m in Sources */,
 			);
