@@ -15,9 +15,11 @@
 #define kUserMediaURL @"https://api.instagram.com/v1/users/%@/media/recent/?client_id=1e046625455d45bd80b2d2dbcf414d69"
 #define kUserSearch @"https://api.instagram.com/v1/users/search?q=%@&access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
 
+
 @interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *userContainerView;
+@property UserTableViewController *userListVC;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *searchTypeControl;
 @property NSMutableArray *instagramDictionaries;
@@ -30,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.favInstagramDictionaries = [NSMutableArray array];
     self.tabBarController.delegate = self;
     [self loadJSONData:kURL];
@@ -90,17 +93,23 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    NSString *searchString = [textField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+
     NSString *urlString = [NSString string];
     if (self.searchTypeControl.selectedSegmentIndex == 0)
     {
-        urlString = [NSString stringWithFormat:kTagSearchURL, self.searchField.text];
+        searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
+        urlString = [NSString stringWithFormat:kTagSearchURL, searchString];
+        [self loadJSONData:urlString];
     }
     else
     {
-        urlString = [NSString stringWithFormat:kUserMediaURL, self.searchField.text];
+        searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        urlString = [NSString stringWithFormat:kUserSearch, searchString];
+        [self.userListVC loadJSONData:urlString];
+        
     }
     
-    [self loadJSONData:urlString];
     return YES;
 }
 
@@ -111,7 +120,7 @@
     [self textFieldShouldReturn:self.searchField];
 }
 
-- (IBAction)onSegmentedControlValueChanged:(UISegmentedControl *)sender
+- (IBAction)onSegmentedControlTapped:(UISegmentedControl *)sender
 {
     if (sender.selectedSegmentIndex == 0)
     {
@@ -124,6 +133,7 @@
         [self.userContainerView setHidden:NO];
     }
 }
+
 
 
 #pragma mark - helper methods
@@ -211,6 +221,11 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *url = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
     return url;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    self.userListVC = segue.destinationViewController;
 }
 
 @end
