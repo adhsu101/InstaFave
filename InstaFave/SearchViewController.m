@@ -16,7 +16,7 @@
 #define kUserSearch @"https://api.instagram.com/v1/users/search?q=%@&access_token=793661.1e04662.d098f8d039df4d0f94962c5846ab97e4"
 
 
-@interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate, UITabBarControllerDelegate>
+@interface SearchViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UITabBarControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *userContainerView;
 @property UserTableViewController *userListVC;
@@ -89,6 +89,14 @@
 
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGSize cellSize = CGSizeMake(screenWidth, screenWidth);
+
+    return cellSize;
+}
+
 #pragma mark - text field delegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -101,7 +109,6 @@
         NSString *urlString = [NSString string];
         if (self.searchTypeControl.selectedSegmentIndex == 0)
         {
-            [self.collectionView setHidden:NO];
             [self.userContainerView setHidden:YES];
 
             searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -110,7 +117,6 @@
         }
         else
         {
-            [self.collectionView setHidden:YES];
             [self.userContainerView setHidden:NO];
 
             searchString = [searchString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
@@ -138,8 +144,7 @@
     NSString *id = [self.userListVC getID];
     NSString *urlString = [NSString stringWithFormat:kUserMediaURL, id];
     [self loadInstagramData:urlString];
-    [self.collectionView setHidden:NO];
-    [self.userContainerView setHidden:YES];    
+    [self.userContainerView setHidden:YES];
 }
 
 #pragma mark - helper methods

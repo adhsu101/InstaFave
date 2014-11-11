@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bpS-07-yf8">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mEA-SD-1em"/>
-                                </connections>
-                            </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vyz-lS-50Z">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e9s-bH-Mvo">
@@ -75,6 +69,12 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Kli-x2-Mtr"/>
                                 </connections>
                             </collectionView>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bpS-07-yf8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mEA-SD-1em"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -166,12 +166,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEV-cj-VTd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="o2H-hv-ecR" kind="embed" identifier="userListSegue" id="4wH-6p-9dz"/>
-                                </connections>
-                            </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ALQ-O9-ph8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SSs-EY-Wf6">
@@ -220,13 +214,23 @@
                                     <outlet property="delegate" destination="9dh-yw-AYv" id="Qc2-k2-NOV"/>
                                 </connections>
                             </collectionView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEV-cj-VTd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="o2H-hv-ecR" kind="embed" identifier="userListSegue" id="4wH-6p-9dz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OEV-cj-VTd" firstAttribute="bottom" secondItem="ALQ-O9-ph8" secondAttribute="bottom" id="0R7-Dp-0kC"/>
+                            <constraint firstItem="OEV-cj-VTd" firstAttribute="top" secondItem="Hiv-UI-WIa" secondAttribute="bottom" constant="-64" id="4PV-Gu-hDk"/>
                             <constraint firstItem="ALQ-O9-ph8" firstAttribute="top" secondItem="Hiv-UI-WIa" secondAttribute="bottom" constant="-64" id="6HC-hl-o6Q"/>
                             <constraint firstItem="ALQ-O9-ph8" firstAttribute="top" secondItem="Syz-qD-pcJ" secondAttribute="top" id="Cxo-tQ-6ux"/>
                             <constraint firstAttribute="bottom" secondItem="ALQ-O9-ph8" secondAttribute="bottom" id="DHb-8R-B0L"/>
+                            <constraint firstItem="OEV-cj-VTd" firstAttribute="trailing" secondItem="ALQ-O9-ph8" secondAttribute="trailing" id="Iio-Al-tZU"/>
                             <constraint firstItem="ALQ-O9-ph8" firstAttribute="leading" secondItem="Syz-qD-pcJ" secondAttribute="leading" id="NrA-o8-sTE"/>
+                            <constraint firstItem="OEV-cj-VTd" firstAttribute="leading" secondItem="ALQ-O9-ph8" secondAttribute="leading" id="bJ6-XW-ZbQ"/>
                             <constraint firstAttribute="trailing" secondItem="ALQ-O9-ph8" secondAttribute="trailing" id="cSd-8e-fas"/>
                         </constraints>
                     </view>
@@ -350,7 +354,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6c-jM-Wz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="O65-7j-D2i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2847" y="1059"/>
+            <point key="canvasLocation" x="2850" y="1059"/>
         </scene>
     </scenes>
     <resources>

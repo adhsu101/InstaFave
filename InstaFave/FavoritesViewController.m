@@ -12,7 +12,7 @@
 
 @import MapKit;
 
-@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, MKMapViewDelegate, UIActionSheetDelegate>
+@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property NSMutableArray *favInstagramDictionaries;
@@ -60,6 +60,14 @@
     [self.collectionView reloadData];
     [self removeAnnotation:instagramDict];
     
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGSize cellSize = CGSizeMake(screenWidth, screenWidth);
+
+    return cellSize;
 }
 
 #pragma mark - map view delegate methods
