@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *searchTypeControl;
 @property NSMutableArray *instagramDictionaries;
 @property NSMutableArray *favInstagramDictionaries;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -151,7 +152,10 @@
 
 - (void)loadInstagramData:(NSString *)urlString
 {
-    
+    [self.instagramDictionaries removeAllObjects];
+    [self.collectionView reloadData];
+    [self.activityIndicator startAnimating];
+
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -167,6 +171,8 @@
             NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSArray *arrayOfRawInstagramDictionaries = jsonData[@"data"];
             [self processDictionaries:arrayOfRawInstagramDictionaries];
+
+            [self.activityIndicator stopAnimating];
             [self.collectionView reloadData];
         }
     }];

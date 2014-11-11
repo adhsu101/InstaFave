@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *users;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -58,7 +59,10 @@
 
 - (void)loadUserData:(NSString *)urlString
 {
-    
+//    [self.users removeAllObjects]; //TODO: why does this break?
+//    [self.tableView reloadData];
+    [self.activityIndicator startAnimating];
+
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -73,6 +77,8 @@
         {
             NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             self.users = jsonData[@"data"];
+
+            [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
         }
     }];
